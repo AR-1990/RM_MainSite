@@ -1,0 +1,40 @@
+[16-Feb-2026 02:47:27 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14
+[24-Feb-2026 17:44:12 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14
+[24-Feb-2026 17:50:50 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14
+[01-Mar-2026 06:56:24 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14
+[01-Mar-2026 07:00:51 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14
+[03-Mar-2026 22:39:21 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14
+[08-Mar-2026 05:12:52 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14
+[01-Apr-2026 23:37:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14
+[15-May-2026 19:40:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14
+[24-May-2026 00:06:44 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/randvcra/public_html/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/randvcra/public_html/bootstrap/app.php on line 14

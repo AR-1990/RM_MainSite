@@ -1,0 +1,392 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Custom Login Form Styles
+.auth-login-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="20" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="80" r="0.8" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+    }
+    
+    // Real estate themed background elements
+    &::after {
+        content: '🏠 🏢 🏘️ 🏡';
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        opacity: 0.1;
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .auth-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        position: relative;
+        
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        }
+        
+        .card-header {
+            background: transparent;
+            border: none;
+            padding: 2rem 2rem 1rem;
+            text-align: center;
+            
+            h2 {
+                color: #2d3748;
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin: 0;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                
+                &::after {
+                    content: '🏠';
+                    display: block;
+                    font-size: 3rem;
+                    margin-top: 0.5rem;
+                    opacity: 0.8;
+                    animation: bounce 2s ease-in-out infinite;
+                }
+            }
+        }
+        
+        .card-body {
+            padding: 2rem;
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+                
+                label {
+                    color: #4a5568;
+                    font-weight: 600;
+                    font-size: 0.95rem;
+                    margin-bottom: 0.5rem;
+                    display: block;
+                    
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        width: 4px;
+                        height: 4px;
+                        background: #667eea;
+                        border-radius: 50%;
+                        margin-right: 8px;
+                        vertical-align: middle;
+                    }
+                }
+                
+                .form-control {
+                    border: 2px solid #e2e8f0;
+                    border-radius: 12px;
+                    padding: 0.875rem 1rem;
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                    background: rgba(255, 255, 255, 0.9);
+                    
+                    &:focus {
+                        border-color: #667eea;
+                        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                        background: #ffffff;
+                        transform: translateY(-2px);
+                    }
+                    
+                    &::placeholder {
+                        color: #a0aec0;
+                    }
+                }
+                
+                .form-check {
+                    margin-top: 1rem;
+                    
+                    .form-check-input {
+                        width: 1.2rem;
+                        height: 1.2rem;
+                        border: 2px solid #cbd5e0;
+                        border-radius: 6px;
+                        
+                        &:checked {
+                            background-color: #667eea;
+                            border-color: #667eea;
+                        }
+                        
+                        &:focus {
+                            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                        }
+                    }
+                    
+                    .form-check-label {
+                        color: #4a5568;
+                        font-weight: 500;
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+            
+            .btn-primary {
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                border: none;
+                border-radius: 12px;
+                padding: 0.875rem 2rem;
+                font-weight: 600;
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+                
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                    transition: left 0.5s;
+                }
+                
+                &:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+                    
+                    &::before {
+                        left: 100%;
+                    }
+                }
+                
+                &:active {
+                    transform: translateY(-1px);
+                }
+            }
+            
+            .btn-link {
+                color: #667eea;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    color: #764ba2;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    
+    .auth-decoration {
+        position: absolute;
+        top: 50%;
+        right: -100px;
+        transform: translateY(-50%);
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        border-radius: 50%;
+        z-index: 0;
+    }
+    
+    .auth-decoration-2 {
+        position: absolute;
+        bottom: -50px;
+        left: -50px;
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(102, 126, 234, 0.1));
+        border-radius: 50%;
+        z-index: 0;
+    }
+    
+    // Additional real estate themed elements
+    .auth-decoration-3 {
+        position: absolute;
+        top: 20%;
+        left: -80px;
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.1));
+        border-radius: 50%;
+        z-index: 0;
+        animation: pulse 4s ease-in-out infinite;
+    }
+    
+    .auth-decoration-4 {
+        position: absolute;
+        bottom: 30%;
+        right: -60px;
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.1));
+        border-radius: 50%;
+        z-index: 0;
+        animation: pulse 4s ease-in-out infinite 2s;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .auth-login-container {
+        .auth-card {
+            margin: 1rem;
+            
+            .card-header h2 {
+                font-size: 2rem;
+                
+                &::after {
+                    font-size: 2.5rem;
+                }
+            }
+            
+            .card-body {
+                padding: 1.5rem;
+            }
+        }
+        
+        .auth-decoration,
+        .auth-decoration-2,
+        .auth-decoration-3,
+        .auth-decoration-4 {
+            display: none;
+        }
+    }
+}
+
+// Error states
+.form-control.is-invalid {
+    border-color: #e53e3e;
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+    
+    &:focus {
+        border-color: #e53e3e;
+        box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+    }
+}
+
+.invalid-feedback {
+    color: #e53e3e;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-weight: 500;
+}
+
+// Success animation
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.2;
+    }
+}
+
+.auth-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+// Additional real estate themed styles
+.alert-success {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border: 1px solid #c3e6cb;
+    border-radius: 12px;
+    color: #155724;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    border: 1px solid #f5c6cb;
+    border-radius: 12px;
+    color: #721c24;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+// Enhanced form validation styling
+.form-control:valid {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.form-control:valid:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+// Loading state for buttons
+.btn-primary:disabled {
+    background: linear-gradient(135deg, #a0aec0, #718096);
+    cursor: not-allowed;
+    transform: none;
+    
+    &:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
