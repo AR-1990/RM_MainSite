@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\DevController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PropertyController;
@@ -34,6 +35,8 @@ use App\Http\Controllers\UserPropertyController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/rm-dev-clear-cache-2026', [DevController::class, 'clearCache'])->name('dev.clear-cache');
 
 // Frontend Property Routes
 Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');

@@ -25,19 +25,16 @@
     <meta name="twitter:description" content="{{ $news->meta_description ?? Str::limit(strip_tags($news->content), 160) }}">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/animate.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/swiper-bundle.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/sib-styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/news.css') }}" />
-
-    <!-- Icon -->
-    <link rel="stylesheet" type="text/css" href="{{ url('icons/icomoon/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/animate.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/swiper-bundle.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/sib-styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/news.css') }}" />
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{{ url('icons/favicon.svg') }}" />
-    <link rel="apple-touch-icon-precomposed" href="{{ url('icons/favicon.svg') }}" />
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('/favicon.ico') }}" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -59,7 +56,7 @@
                     <div class="wrap-loader">
                         <div class="loader"></div>
                         <div class="icon">
-                            <img src="{{ url('/images/logo/loading.png') }}" alt="logo_icon">
+                            <img src="{{ asset('/images/logo/loading.png') }}" alt="logo_icon">
                         </div>
                     </div>
                 </div>
@@ -269,10 +266,10 @@
     </div><!-- /#wrapper -->
 
     <!-- Scripts -->
-    <script src="{{ url('js/jquery.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ url('js/swiper-bundle.min.js') }}"></script>
-    <script src="{{ url('js/main.js') }}"></script>
+    <script src="{{ asset('/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('/js/main.js') }}"></script>
 
     <script>
         $(document).ready(function() {

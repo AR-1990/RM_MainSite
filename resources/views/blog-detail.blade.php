@@ -11,7 +11,7 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="{{ $blog->title }}">
     <meta property="og:description" content="{{ strip_tags($blog->description) }}">
-    <meta property="og:image" content="{{ $blog->featured_image ? url('' . $blog->featured_image) : url('images/logo/logo.png') }}">
+    <meta property="og:image" content="{{ $blog->featured_image ? asset(ltrim($blog->featured_image, '/')) : asset('/images/logo/logo.png') }}">
     <meta property="og:url" content="{{ request()->fullurl() }}">
     <meta property="og:type" content="article">
 
@@ -19,16 +19,16 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $blog->title }}">
     <meta name="twitter:description" content="{{ strip_tags($blog->description) }}">
-    <meta name="twitter:image" content="{{ $blog->featured_image ? url('' . $blog->featured_image) : url('images/logo/logo.png') }}">
+    <meta name="twitter:image" content="{{ $blog->featured_image ? asset(ltrim($blog->featured_image, '/')) : asset('/images/logo/logo.png') }}">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/animate.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/sib-styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/blog.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('icons/icomoon/style.css') }}" />
-    <link rel="shortcut icon" href="{{ url('icons/favicon.svg') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/animate.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/sib-styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/styles.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/blog.css') }}" />
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" />
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('/favicon.ico') }}" />
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -114,7 +114,7 @@
                             <!-- Featured Image -->
                             @if($blog->featured_image)
                                 <div class="blog-featured-image">
-                                    <img src="{{ url('' . $blog->featured_image) }}" alt="{{ $blog->title }}">
+                                    <img src="{{ asset(ltrim($blog->featured_image, '/')) }}" alt="{{ $blog->title }}">
                                 </div>
                             @endif
 
@@ -204,9 +204,9 @@
                                                 <div class="related-post-image">
                                                     <a href="{{ route('blog.show', $related->slug) }}">
                                                         @if($related->featured_image)
-                                                            <img src="{{ url('' . $related->featured_image) }}" alt="{{ $related->title }}">
+                                                            <img src="{{ asset(ltrim($related->featured_image, '/')) }}" alt="{{ $related->title }}">
                                                         @else
-                                                            <img src="{{ url('images/section/agencies-1.jpg') }}" alt="{{ $related->title }}">
+                                                            <img src="{{ asset('/images/section/agencies-1.jpg') }}" alt="{{ $related->title }}">
                                                         @endif
                                                     </a>
                                                 </div>
@@ -289,14 +289,13 @@
     </div>
 
     <!-- Javascript -->
-    <script src="{{ url('js/jquery.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ url('js/swiper-bundle.min.js') }}"></script>
-    <script src="{{ url('js/swiper.js') }}"></script>
-    <script src="{{ url('js/plugin.js') }}"></script>
-    <script src="{{ url('js/jquery.fancybox.js') }}"></script>
-    <script src="{{ url('js/main.js') }}"></script>
+    <script src="{{ asset('/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('/js/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('/js/swiper.js') }}"></script>
+    <script src="{{ asset('/js/jquery.fancybox.js') }}"></script>
+    <script src="{{ asset('/js/main.js') }}"></script>
 
     <script>
         $(document).ready(function() {

@@ -25,19 +25,16 @@
     <meta name="twitter:description" content="<?php echo e($news->meta_description ?? Str::limit(strip_tags($news->content), 160)); ?>">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/bootstrap.css')); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/animate.min.css')); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/swiper-bundle.min.css')); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/sib-styles.css')); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/styles.css')); ?>" />
-    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/news.css')); ?>" />
-
-    <!-- Icon -->
-    <link rel="stylesheet" type="text/css" href="<?php echo e(url('icons/icomoon/style.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/bootstrap.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/animate.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/swiper-bundle.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/sib-styles.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/styles.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/news.css')); ?>" />
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="<?php echo e(url('icons/favicon.svg')); ?>" />
-    <link rel="apple-touch-icon-precomposed" href="<?php echo e(url('icons/favicon.svg')); ?>" />
+    <link rel="shortcut icon" href="<?php echo e(asset('/favicon.ico')); ?>" />
+    <link rel="apple-touch-icon-precomposed" href="<?php echo e(asset('/favicon.ico')); ?>" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -59,7 +56,7 @@
                     <div class="wrap-loader">
                         <div class="loader"></div>
                         <div class="icon">
-                            <img src="<?php echo e(url('/images/logo/loading.png')); ?>" alt="logo_icon">
+                            <img src="<?php echo e(asset('/images/logo/loading.png')); ?>" alt="logo_icon">
                         </div>
                     </div>
                 </div>
@@ -271,10 +268,10 @@
     </div><!-- /#wrapper -->
 
     <!-- Scripts -->
-    <script src="<?php echo e(url('js/jquery.min.js')); ?>"></script>
-    <script src="<?php echo e(url('js/bootstrap.bundle.min.js')); ?>"></script>
-    <script src="<?php echo e(url('js/swiper-bundle.min.js')); ?>"></script>
-    <script src="<?php echo e(url('js/main.js')); ?>"></script>
+    <script src="<?php echo e(asset('/js/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('/js/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('/js/swiper-bundle.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('/js/main.js')); ?>"></script>
 
     <script>
         $(document).ready(function() {

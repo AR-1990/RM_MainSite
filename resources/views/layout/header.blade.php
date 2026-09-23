@@ -82,7 +82,11 @@
 
                                     <div class="mobile-button" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile"
                                         aria-controls="menu-mobile">
-                                        <i class="icon-menu"></i>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+                                            <path d="M4 7H20"></path>
+                                            <path d="M4 12H20"></path>
+                                            <path d="M4 17H20"></path>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>

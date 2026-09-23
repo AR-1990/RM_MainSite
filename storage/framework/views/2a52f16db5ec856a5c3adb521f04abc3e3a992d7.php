@@ -313,4 +313,4 @@
     </script>
 </body>
 </html>
-<?php /**PATH /Users/mac/Documents/GitHub/RM_MainSite/resources/views/property/index.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\Users\AR\Desktop\RM_MainSite\resources\views/property/index.blade.php ENDPATH**/ ?>

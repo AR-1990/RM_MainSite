@@ -1,4 +1,4 @@
-<?php if (! $__env->hasRenderedOnce('a80e7549-d52f-42e7-8802-d73f0c946ab3')): $__env->markAsRenderedOnce('a80e7549-d52f-42e7-8802-d73f0c946ab3'); ?>
+<?php if (! $__env->hasRenderedOnce('c3706961-c3c3-4b70-91a3-f2e149379162')): $__env->markAsRenderedOnce('c3706961-c3c3-4b70-91a3-f2e149379162'); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/header-modern.css')); ?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,7 +82,11 @@
 
                                     <div class="mobile-button" data-bs-toggle="offcanvas" data-bs-target="#menu-mobile"
                                         aria-controls="menu-mobile">
-                                        <i class="icon-menu"></i>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true">
+                                            <path d="M4 7H20"></path>
+                                            <path d="M4 12H20"></path>
+                                            <path d="M4 17H20"></path>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +96,7 @@
             </div>
         </header><!-- /.header -->
 
-<?php if (! $__env->hasRenderedOnce('42239b66-3909-4a10-a7af-ce431a1df23e')): $__env->markAsRenderedOnce('42239b66-3909-4a10-a7af-ce431a1df23e'); ?>
+<?php if (! $__env->hasRenderedOnce('8b550621-b730-495b-ae22-2e97ec94cfa3')): $__env->markAsRenderedOnce('8b550621-b730-495b-ae22-2e97ec94cfa3'); ?>
 <script>
 (function () {
     function initSiteHeader() {
