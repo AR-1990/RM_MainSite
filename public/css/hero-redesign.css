@@ -2233,9 +2233,9 @@ body.home-hero-redesign .home-theme-band .home-white-inset .section-help-hscroll
 
 body.home-hero-redesign .home-theme-band .home-white-inset .section-help-hscroll .help-h-footnote {
   color: #666;
-  padding-bottom: 28px;
+  padding-bottom: 0;
   margin-bottom: 0;
-  border-bottom: 1px solid #ececec;
+  border-bottom: none;
 }
 
 body.home-hero-redesign .home-theme-band .home-white-inset .section-help-hscroll .help-h-footnote a {

@@ -40,7 +40,7 @@
         .hero-section {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
             color: white;
-            padding: 60px 0;
+            padding: 24px 0 32px;
         }
         
         .hero-section h1 {
@@ -425,7 +425,8 @@
         <div class="container">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Projects</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('projects.index') }}">Projects</a></li>
                     <li class="breadcrumb-item active">{{ $project->title }}</li>
                 </ol>
             </nav>

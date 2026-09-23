@@ -11,7 +11,7 @@ body.properties-page {
 }
 
 body.properties-page .properties-main {
-  padding-top: calc(var(--nav-height, 72px) + 28px);
+  padding-top: 0;
 }
 
 body.properties-page .properties-kicker {

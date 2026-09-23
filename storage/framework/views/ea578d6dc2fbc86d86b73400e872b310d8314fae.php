@@ -2,22 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
     <meta charset="utf-8" />
-    <title>{{ $property->title }} - Randhawa Marketing</title>
-    <meta name="description" content="Property details for {{ $property->title }}">
+    <title><?php echo e($property->title); ?> - Randhawa Marketing</title>
+    <meta name="description" content="Property details for <?php echo e($property->title); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/animate.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/swiper-bundle.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/sib-styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/hero-redesign.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/footer-modern.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/property-detail.css') }}" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/bootstrap.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/animate.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/swiper-bundle.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/sib-styles.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/styles.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/hero-redesign.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/footer-modern.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/property-detail.css')); ?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/icons/icomoon/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/icons/icomoon/style.css')); ?>" />
     <style>
         body.property-detail-page .pd-main {
             padding-top: 0 !important;
@@ -30,18 +30,18 @@
             margin-bottom: 12px !important;
         }
     </style>
-    <link rel="shortcut icon" href="{{ asset('/icons/favicon.svg') }}" />
+    <link rel="shortcut icon" href="<?php echo e(asset('/icons/favicon.svg')); ?>" />
 </head>
 
 <body class="popup-loader home-hero-redesign property-detail-page">
-    @php
+    <?php
         $similarProperties = \App\Models\Property::where('property_category_id', $property->property_category_id)
             ->where('id', '!=', $property->id)
             ->where('is_active', true)
             ->where('is_deactivated', false)
             ->limit(3)
             ->get();
-    @endphp
+    ?>
 
     <div id="wrapper">
         <div id="loading">
@@ -50,20 +50,20 @@
                     <div class="wrap-loader">
                         <div class="loader"></div>
                         <div class="icon">
-                            <img src="{{ asset('/images/logo/loading.png') }}" alt="logo_icon">
+                            <img src="<?php echo e(asset('/images/logo/loading.png')); ?>" alt="logo_icon">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        @include('layout.header')
+        <?php echo $__env->make('layout.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <main class="pd-main">
             <section class="pd-intro">
                 <div class="tf-container">
                     <div class="pd-intro-top">
-                        <a href="{{ route('properties.index') }}" class="pd-back">
+                        <a href="<?php echo e(route('properties.index')); ?>" class="pd-back">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <line x1="19" y1="12" x2="5" y2="12"/>
                                 <polyline points="12 19 5 12 12 5"/>
@@ -71,26 +71,27 @@
                             Back to properties
                         </a>
                         <div class="pd-badges">
-                            <span class="pd-badge {{ $property->is_sold ? 'is-sold' : '' }}">
-                                {{ $property->is_sold ? 'Sold' : ucfirst(str_replace('_', ' ', $property->property_status)) }}
+                            <span class="pd-badge <?php echo e($property->is_sold ? 'is-sold' : ''); ?>">
+                                <?php echo e($property->is_sold ? 'Sold' : ucfirst(str_replace('_', ' ', $property->property_status))); ?>
+
                             </span>
-                            @if($property->category)
-                                <span class="pd-badge is-soft">{{ $property->category->name }}</span>
-                            @endif
+                            <?php if($property->category): ?>
+                                <span class="pd-badge is-soft"><?php echo e($property->category->name); ?></span>
+                            <?php endif; ?>
                         </div>
                     </div>
 
                     <div class="pd-intro-inner">
                         <span class="pd-kicker">Property</span>
-                        <h1 class="pd-title">{{ $property->title }}</h1>
+                        <h1 class="pd-title"><?php echo e($property->title); ?></h1>
                         <p class="pd-location">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                                 <circle cx="12" cy="10" r="3"/>
                             </svg>
-                            <span>{{ $property->full_address }}{{ $property->city ? ', ' . $property->city : '' }}</span>
+                            <span><?php echo e($property->full_address); ?><?php echo e($property->city ? ', ' . $property->city : ''); ?></span>
                         </p>
-                        <p class="pd-price">{{ $property->display_price }}</p>
+                        <p class="pd-price"><?php echo e($property->display_price); ?></p>
                     </div>
                 </div>
             </section>
@@ -103,61 +104,61 @@
                                 <div class="pd-gallery-main">
                                     <img
                                         id="pd-main-image"
-                                        src="{{ $property->primary_image ? url($property->primary_image) : asset('/images/section/box-house.jpg') }}"
-                                        alt="{{ $property->title }}">
+                                        src="<?php echo e($property->primary_image ? url($property->primary_image) : asset('/images/section/box-house.jpg')); ?>"
+                                        alt="<?php echo e($property->title); ?>">
                                 </div>
-                                @if($property->images->count() > 0)
+                                <?php if($property->images->count() > 0): ?>
                                     <div class="pd-thumbs">
-                                        @if($property->primary_image)
-                                            <button type="button" class="pd-thumb is-active" data-src="{{ url($property->primary_image) }}">
-                                                <img src="{{ url($property->primary_image) }}" alt="">
+                                        <?php if($property->primary_image): ?>
+                                            <button type="button" class="pd-thumb is-active" data-src="<?php echo e(url($property->primary_image)); ?>">
+                                                <img src="<?php echo e(url($property->primary_image)); ?>" alt="">
                                             </button>
-                                        @endif
-                                        @foreach($property->images as $image)
-                                            <button type="button" class="pd-thumb" data-src="{{ url($image->image_path) }}">
-                                                <img src="{{ url($image->image_path) }}" alt="">
+                                        <?php endif; ?>
+                                        <?php $__currentLoopData = $property->images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <button type="button" class="pd-thumb" data-src="<?php echo e(url($image->image_path)); ?>">
+                                                <img src="<?php echo e(url($image->image_path)); ?>" alt="">
                                             </button>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
-                                @endif
+                                <?php endif; ?>
                             </div>
 
                             <ul class="pd-features">
-                                @if($property->bedrooms > 0)
+                                <?php if($property->bedrooms > 0): ?>
                                     <li>
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <path d="M3 21V8a2 2 0 0 1 2-2h4l2-2h4a2 2 0 0 1 2 2v15"/>
                                             <path d="M3 21h18"/>
                                             <path d="M7 11h2M15 11h2"/>
                                         </svg>
-                                        <span>{{ $property->bedrooms }} bedrooms</span>
+                                        <span><?php echo e($property->bedrooms); ?> bedrooms</span>
                                     </li>
-                                @endif
-                                @if($property->bathrooms > 0)
+                                <?php endif; ?>
+                                <?php if($property->bathrooms > 0): ?>
                                     <li>
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <path d="M4 12h16a1 1 0 0 1 1 1v2a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-2a1 1 0 0 1 1-1z"/>
                                             <path d="M6 12V5a2 2 0 0 1 2-2h1"/>
                                         </svg>
-                                        <span>{{ $property->bathrooms }} bathrooms</span>
+                                        <span><?php echo e($property->bathrooms); ?> bathrooms</span>
                                     </li>
-                                @endif
+                                <?php endif; ?>
                                 <li>
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <rect x="3" y="3" width="18" height="18" rx="2"/>
                                         <path d="M3 9h18M9 21V9"/>
                                     </svg>
-                                    <span>{{ $property->display_size }} {{ $property->size_prefix }}</span>
+                                    <span><?php echo e($property->display_size); ?> <?php echo e($property->size_prefix); ?></span>
                                 </li>
-                                @if($property->garages)
+                                <?php if($property->garages): ?>
                                     <li>
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <rect x="3" y="11" width="18" height="10" rx="1"/>
                                             <path d="M3 11V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4"/>
                                         </svg>
-                                        <span>{{ $property->garages }} parking</span>
+                                        <span><?php echo e($property->garages); ?> parking</span>
                                     </li>
-                                @endif
+                                <?php endif; ?>
                             </ul>
 
                             <div class="pd-panel">
@@ -165,7 +166,7 @@
                                     <span class="pd-kicker">Overview</span>
                                     <h2>Description</h2>
                                 </div>
-                                <p class="pd-copy">{{ $property->description ?: 'No description available for this property.' }}</p>
+                                <p class="pd-copy"><?php echo e($property->description ?: 'No description available for this property.'); ?></p>
                             </div>
 
                             <div class="pd-panel">
@@ -174,75 +175,75 @@
                                     <h2>Property details</h2>
                                 </div>
                                 <dl class="pd-specs">
-                                    @if($property->bedrooms > 0)
-                                        <div><dt>Bedrooms</dt><dd>{{ $property->bedrooms }}</dd></div>
-                                    @endif
-                                    @if($property->bathrooms > 0)
-                                        <div><dt>Bathrooms</dt><dd>{{ $property->bathrooms }}</dd></div>
-                                    @endif
-                                    @if($property->rooms > 0)
-                                        <div><dt>Total rooms</dt><dd>{{ $property->rooms }}</dd></div>
-                                    @endif
-                                    @if($property->garages > 0)
-                                        <div><dt>Parking</dt><dd>{{ $property->garages }}</dd></div>
-                                    @endif
-                                    <div><dt>Size</dt><dd>{{ $property->display_size }} {{ $property->size_prefix }}</dd></div>
-                                    @if($property->furnished_status !== 'N/A')
-                                        <div><dt>Furnished</dt><dd>{{ $property->furnished_status }}</dd></div>
-                                    @endif
-                                    <div><dt>1 Marla value</dt><dd>{{ $property->marla_value }}</dd></div>
-                                    <div><dt>Status</dt><dd>{{ ucfirst(str_replace('_', ' ', $property->property_status)) }}</dd></div>
+                                    <?php if($property->bedrooms > 0): ?>
+                                        <div><dt>Bedrooms</dt><dd><?php echo e($property->bedrooms); ?></dd></div>
+                                    <?php endif; ?>
+                                    <?php if($property->bathrooms > 0): ?>
+                                        <div><dt>Bathrooms</dt><dd><?php echo e($property->bathrooms); ?></dd></div>
+                                    <?php endif; ?>
+                                    <?php if($property->rooms > 0): ?>
+                                        <div><dt>Total rooms</dt><dd><?php echo e($property->rooms); ?></dd></div>
+                                    <?php endif; ?>
+                                    <?php if($property->garages > 0): ?>
+                                        <div><dt>Parking</dt><dd><?php echo e($property->garages); ?></dd></div>
+                                    <?php endif; ?>
+                                    <div><dt>Size</dt><dd><?php echo e($property->display_size); ?> <?php echo e($property->size_prefix); ?></dd></div>
+                                    <?php if($property->furnished_status !== 'N/A'): ?>
+                                        <div><dt>Furnished</dt><dd><?php echo e($property->furnished_status); ?></dd></div>
+                                    <?php endif; ?>
+                                    <div><dt>1 Marla value</dt><dd><?php echo e($property->marla_value); ?></dd></div>
+                                    <div><dt>Status</dt><dd><?php echo e(ucfirst(str_replace('_', ' ', $property->property_status))); ?></dd></div>
                                 </dl>
                             </div>
 
-                            @if($property->amenities->count() > 0)
+                            <?php if($property->amenities->count() > 0): ?>
                                 <div class="pd-panel">
                                     <div class="pd-panel-head">
                                         <span class="pd-kicker">Included</span>
                                         <h2>Amenities</h2>
                                     </div>
                                     <ul class="pd-amenities">
-                                        @foreach($property->amenities as $amenity)
+                                        <?php $__currentLoopData = $property->amenities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $amenity): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <li>
                                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                                     <polyline points="20 6 9 17 4 12"/>
                                                 </svg>
-                                                <span>{{ $amenity->amenity_name }}</span>
+                                                <span><?php echo e($amenity->amenity_name); ?></span>
                                             </li>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
                                 </div>
-                            @endif
+                            <?php endif; ?>
 
-                            @if($property->floors->count() > 0)
+                            <?php if($property->floors->count() > 0): ?>
                                 <div class="pd-panel">
                                     <div class="pd-panel-head">
                                         <span class="pd-kicker">Layout</span>
                                         <h2>Floor details</h2>
                                     </div>
                                     <div class="pd-floors">
-                                        @foreach($property->floors as $floor)
+                                        <?php $__currentLoopData = $property->floors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $floor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <article class="pd-floor">
                                                 <div class="pd-floor-top">
-                                                    <h3>{{ $floor->floor_name }}</h3>
-                                                    <span>{{ $floor->price_prefix }} {{ number_format($floor->floor_price) }}</span>
+                                                    <h3><?php echo e($floor->floor_name); ?></h3>
+                                                    <span><?php echo e($floor->price_prefix); ?> <?php echo e(number_format($floor->floor_price)); ?></span>
                                                 </div>
                                                 <ul class="pd-floor-meta">
-                                                    <li>{{ $floor->floor_size }} {{ $floor->size_postfix }}</li>
-                                                    <li>{{ $floor->bedrooms }} beds</li>
-                                                    <li>{{ $floor->bathrooms }} baths</li>
+                                                    <li><?php echo e($floor->floor_size); ?> <?php echo e($floor->size_postfix); ?></li>
+                                                    <li><?php echo e($floor->bedrooms); ?> beds</li>
+                                                    <li><?php echo e($floor->bathrooms); ?> baths</li>
                                                 </ul>
-                                                @if($floor->description)
-                                                    <p>{{ $floor->description }}</p>
-                                                @endif
-                                                @if($floor->floor_image)
-                                                    <img src="{{ url($floor->floor_image) }}" alt="{{ $floor->floor_name }}" class="pd-floor-image">
-                                                @endif
+                                                <?php if($floor->description): ?>
+                                                    <p><?php echo e($floor->description); ?></p>
+                                                <?php endif; ?>
+                                                <?php if($floor->floor_image): ?>
+                                                    <img src="<?php echo e(url($floor->floor_image)); ?>" alt="<?php echo e($floor->floor_name); ?>" class="pd-floor-image">
+                                                <?php endif; ?>
                                             </article>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 </div>
-                            @endif
+                            <?php endif; ?>
                         </div>
 
                         <aside class="pd-sidebar">
@@ -255,10 +256,10 @@
 
                                 <div class="pd-agent">
                                     <div class="pd-agent-avatar">
-                                        <img src="{{ asset('/images/avatar/account.jpg') }}" alt="">
+                                        <img src="<?php echo e(asset('/images/avatar/account.jpg')); ?>" alt="">
                                     </div>
                                     <div>
-                                        <strong>{{ $property->user->name ?? 'Property agent' }}</strong>
+                                        <strong><?php echo e($property->user->name ?? 'Property agent'); ?></strong>
                                         <span>Real estate agent</span>
                                     </div>
                                 </div>
@@ -268,21 +269,21 @@
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                                         </svg>
-                                        <a href="tel:{{ preg_replace('/\s+/', '', $property->user->phone ?? '03331929762') }}">{{ $property->user->phone ?? '0333-1929762' }}</a>
+                                        <a href="tel:<?php echo e(preg_replace('/\s+/', '', $property->user->phone ?? '03331929762')); ?>"><?php echo e($property->user->phone ?? '0333-1929762'); ?></a>
                                     </li>
                                     <li>
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                             <polyline points="22,6 12,13 2,6"/>
                                         </svg>
-                                        <a href="mailto:{{ $property->user->email ?? 'info@randhawamarketing.com' }}">{{ $property->user->email ?? 'info@randhawamarketing.com' }}</a>
+                                        <a href="mailto:<?php echo e($property->user->email ?? 'info@randhawamarketing.com'); ?>"><?php echo e($property->user->email ?? 'info@randhawamarketing.com'); ?></a>
                                     </li>
                                 </ul>
 
-                                <form action="{{ route('contact.store') }}" method="POST" class="pd-form">
-                                    @csrf
+                                <form action="<?php echo e(route('contact.store')); ?>" method="POST" class="pd-form">
+                                    <?php echo csrf_field(); ?>
                                     <input type="hidden" name="source" value="property_detail">
-                                    <input type="hidden" name="subject" value="Inquiry: {{ $property->title }}">
+                                    <input type="hidden" name="subject" value="Inquiry: <?php echo e($property->title); ?>">
                                     <div class="pd-field">
                                         <label for="pd-name">Full name</label>
                                         <input id="pd-name" type="text" name="name" required>
@@ -303,40 +304,40 @@
                                 </form>
                             </div>
 
-                            @if($similarProperties->count())
+                            <?php if($similarProperties->count()): ?>
                                 <div class="pd-side-panel">
                                     <div class="pd-panel-head">
                                         <span class="pd-kicker">More</span>
                                         <h2>Similar properties</h2>
                                     </div>
                                     <ul class="pd-similar">
-                                        @foreach($similarProperties as $similar)
+                                        <?php $__currentLoopData = $similarProperties; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $similar): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <li>
-                                                <a href="{{ route('properties.show', $similar->id) }}" class="pd-similar-card">
-                                                    <img src="{{ $similar->primary_image ? url($similar->primary_image) : asset('/images/section/box-house.jpg') }}" alt="{{ $similar->title }}">
+                                                <a href="<?php echo e(route('properties.show', $similar->id)); ?>" class="pd-similar-card">
+                                                    <img src="<?php echo e($similar->primary_image ? url($similar->primary_image) : asset('/images/section/box-house.jpg')); ?>" alt="<?php echo e($similar->title); ?>">
                                                     <div>
-                                                        <strong>{{ $similar->title }}</strong>
-                                                        <span>{{ $similar->display_price }}</span>
-                                                        <em>{{ $similar->city }}</em>
+                                                        <strong><?php echo e($similar->title); ?></strong>
+                                                        <span><?php echo e($similar->display_price); ?></span>
+                                                        <em><?php echo e($similar->city); ?></em>
                                                     </div>
                                                 </a>
                                             </li>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </ul>
                                 </div>
-                            @endif
+                            <?php endif; ?>
                         </aside>
                     </div>
                 </div>
             </section>
         </main>
 
-        @include('layout.footer')
+        <?php echo $__env->make('layout.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 
-    <script src="{{ asset('/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/js/main.js') }}"></script>
+    <script src="<?php echo e(asset('/js/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('/js/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('/js/main.js')); ?>"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var main = document.getElementById('pd-main-image');
@@ -353,3 +354,4 @@
     </script>
 </body>
 </html>
+<?php /**PATH /Users/mac/Documents/GitHub/RM_MainSite/resources/views/property/show.blade.php ENDPATH**/ ?>

@@ -2,33 +2,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
     <meta charset="utf-8" />
-    <title>{{ $blog->title }} - Real Estate Blog | Randhawa Marketing</title>
-    <meta name="description" content="{{ strip_tags($blog->description) }}">
-    <meta name="keywords" content="RealEstate, Blog, {{ $blog->category->name ?? 'Real Estate' }}, Property News">
-    <meta name="author" content="{{ $blog->author }}" />
+    <title><?php echo e($blog->title); ?> - Real Estate Blog | Randhawa Marketing</title>
+    <meta name="description" content="<?php echo e(strip_tags($blog->description)); ?>">
+    <meta name="keywords" content="RealEstate, Blog, <?php echo e($blog->category->name ?? 'Real Estate'); ?>, Property News">
+    <meta name="author" content="<?php echo e($blog->author); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{{ $blog->title }}">
-    <meta property="og:description" content="{{ strip_tags($blog->description) }}">
-    <meta property="og:image" content="{{ $blog->featured_image ? url('' . $blog->featured_image) : url('images/logo/logo.png') }}">
-    <meta property="og:url" content="{{ request()->fullurl() }}">
+    <meta property="og:title" content="<?php echo e($blog->title); ?>">
+    <meta property="og:description" content="<?php echo e(strip_tags($blog->description)); ?>">
+    <meta property="og:image" content="<?php echo e($blog->featured_image ? url('' . $blog->featured_image) : url('images/logo/logo.png')); ?>">
+    <meta property="og:url" content="<?php echo e(request()->fullurl()); ?>">
     <meta property="og:type" content="article">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $blog->title }}">
-    <meta name="twitter:description" content="{{ strip_tags($blog->description) }}">
-    <meta name="twitter:image" content="{{ $blog->featured_image ? url('' . $blog->featured_image) : url('images/logo/logo.png') }}">
+    <meta name="twitter:title" content="<?php echo e($blog->title); ?>">
+    <meta name="twitter:description" content="<?php echo e(strip_tags($blog->description)); ?>">
+    <meta name="twitter:image" content="<?php echo e($blog->featured_image ? url('' . $blog->featured_image) : url('images/logo/logo.png')); ?>">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/animate.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/sib-styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/blog.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('icons/icomoon/style.css') }}" />
-    <link rel="shortcut icon" href="{{ url('icons/favicon.svg') }}" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/bootstrap.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/animate.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/sib-styles.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/styles.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/blog.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('icons/icomoon/style.css')); ?>" />
+    <link rel="shortcut icon" href="<?php echo e(url('icons/favicon.svg')); ?>" />
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -44,7 +44,7 @@
         <!-- Reading Progress Bar -->
         <div class="reading-progress" id="reading-progress"></div>
 
-        @include('layout.header')
+        <?php echo $__env->make('layout.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <!-- Blog Hero Section -->
         <section class="blog-hero">
@@ -52,54 +52,55 @@
                 <div class="container">
                     <div class="blog-breadcrumb">
                         <nav class="breadcrumb-elegant">
-                            <a href="{{ route('index') }}"><i class="fas fa-home me-1"></i>Home</a>
+                            <a href="<?php echo e(route('index')); ?>"><i class="fas fa-home me-1"></i>Home</a>
                             <span class="bc-sep">/</span>
-                            <a href="{{ route('blog.index') }}">Blog</a>
-                            @if($blog->category)
+                            <a href="<?php echo e(route('blog.index')); ?>">Blog</a>
+                            <?php if($blog->category): ?>
                                 <span class="bc-sep">/</span>
-                                <a href="{{ route('blog.category', $blog->category->slug) }}">{{ $blog->category->name }}</a>
-                            @endif
+                                <a href="<?php echo e(route('blog.category', $blog->category->slug)); ?>"><?php echo e($blog->category->name); ?></a>
+                            <?php endif; ?>
                             <span class="bc-sep">/</span>
-                            <span class="bc-current">{{ \Str::limit($blog->title, 45) }}</span>
+                            <span class="bc-current"><?php echo e(\Str::limit($blog->title, 45)); ?></span>
                         </nav>
                     </div>
 
-                    @if($blog->category)
-                        <a href="{{ route('blog.category', $blog->category->slug) }}" class="blog-hero-category">
-                            <i class="fas fa-tag me-1"></i> {{ $blog->category->name }}
-                        </a>
-                    @endif
+                    <?php if($blog->category): ?>
+                        <a href="<?php echo e(route('blog.category', $blog->category->slug)); ?>" class="blog-hero-category">
+                            <i class="fas fa-tag me-1"></i> <?php echo e($blog->category->name); ?>
 
-                    <h1 class="blog-hero-title">{{ $blog->title }}</h1>
+                        </a>
+                    <?php endif; ?>
+
+                    <h1 class="blog-hero-title"><?php echo e($blog->title); ?></h1>
 
                     <div class="hero-meta">
                         <div class="hero-meta-item">
                             <i class="fas fa-calendar-alt"></i>
-                            <span>{{ $blog->formatted_published_date }}</span>
+                            <span><?php echo e($blog->formatted_published_date); ?></span>
                         </div>
                         <div class="hero-meta-item">
                             <i class="fas fa-user-circle"></i>
-                            <span>{{ $blog->author }}</span>
+                            <span><?php echo e($blog->author); ?></span>
                         </div>
                         <div class="hero-meta-item">
                             <i class="fas fa-eye"></i>
-                            <span>{{ number_format($blog->views_count) }} Views</span>
+                            <span><?php echo e(number_format($blog->views_count)); ?> Views</span>
                         </div>
                         <div class="hero-meta-item">
                             <i class="fas fa-clock"></i>
-                            <span>{{ $blog->reading_time }} min read</span>
+                            <span><?php echo e($blog->reading_time); ?> min read</span>
                         </div>
-                        @if($blog->is_featured)
+                        <?php if($blog->is_featured): ?>
                             <div class="hero-meta-item featured-badge">
                                 <i class="fas fa-star"></i>
                                 <span>Featured</span>
                             </div>
-                        @endif
+                        <?php endif; ?>
                     </div>
 
-                    @if($blog->description)
-                        <p class="blog-hero-lead">{!! strip_tags($blog->description) !!}</p>
-                    @endif
+                    <?php if($blog->description): ?>
+                        <p class="blog-hero-lead"><?php echo strip_tags($blog->description); ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>
@@ -112,31 +113,32 @@
                     <div class="col-lg-8">
                         <article class="blog-article">
                             <!-- Featured Image -->
-                            @if($blog->featured_image)
+                            <?php if($blog->featured_image): ?>
                                 <div class="blog-featured-image">
-                                    <img src="{{ url('' . $blog->featured_image) }}" alt="{{ $blog->title }}">
+                                    <img src="<?php echo e(url('' . $blog->featured_image)); ?>" alt="<?php echo e($blog->title); ?>">
                                 </div>
-                            @endif
+                            <?php endif; ?>
 
                             <!-- Article Meta Bar -->
                             <div class="article-meta-bar">
                                 <div class="author-section">
                                     <div class="author-avatar">
-                                        {{ strtoupper(substr($blog->author, 0, 1)) }}
+                                        <?php echo e(strtoupper(substr($blog->author, 0, 1))); ?>
+
                                     </div>
                                     <div class="author-info">
-                                        <h4>{{ $blog->author }}</h4>
-                                        <p>Published on {{ $blog->formatted_published_date }}</p>
+                                        <h4><?php echo e($blog->author); ?></h4>
+                                        <p>Published on <?php echo e($blog->formatted_published_date); ?></p>
                                     </div>
                                 </div>
                                 <div class="article-stats">
                                     <div class="stat-item">
                                         <i class="fas fa-eye"></i>
-                                        <span>{{ number_format($blog->views_count) }} views</span>
+                                        <span><?php echo e(number_format($blog->views_count)); ?> views</span>
                                     </div>
                                     <div class="stat-item">
                                         <i class="fas fa-clock"></i>
-                                        <span>{{ $blog->reading_time }}m read</span>
+                                        <span><?php echo e($blog->reading_time); ?>m read</span>
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +146,8 @@
                             <!-- Blog Content -->
                             <div class="blog-content-wrapper">
                                 <div class="blog-content">
-                                    {!! $blog->content !!}
+                                    <?php echo $blog->content; ?>
+
                                 </div>
                             </div>
 
@@ -154,33 +157,34 @@
                                     <!-- Tags -->
                                     <div class="blog-tags">
                                         <span class="tags-label"><i class="fas fa-tags me-1"></i>Tags:</span>
-                                        @if($blog->category)
-                                            <a href="{{ route('blog.category', $blog->category->slug) }}" class="tag-item">
-                                                {{ $blog->category->name }}
+                                        <?php if($blog->category): ?>
+                                            <a href="<?php echo e(route('blog.category', $blog->category->slug)); ?>" class="tag-item">
+                                                <?php echo e($blog->category->name); ?>
+
                                             </a>
-                                        @endif
-                                        <a href="{{ route('blog.index') }}?search=real+estate" class="tag-item">Real Estate</a>
-                                        <a href="{{ route('blog.index') }}?search=property" class="tag-item">Property</a>
-                                        <a href="{{ route('blog.index') }}?search=investment" class="tag-item">Investment</a>
+                                        <?php endif; ?>
+                                        <a href="<?php echo e(route('blog.index')); ?>?search=real+estate" class="tag-item">Real Estate</a>
+                                        <a href="<?php echo e(route('blog.index')); ?>?search=property" class="tag-item">Property</a>
+                                        <a href="<?php echo e(route('blog.index')); ?>?search=investment" class="tag-item">Investment</a>
                                     </div>
 
                                     <!-- Share Buttons -->
                                     <div class="share-section">
                                         <span class="share-label">Share:</span>
                                         <div class="share-buttons">
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullurl()) }}" 
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo e(urlencode(request()->fullurl())); ?>" 
                                                target="_blank" class="share-btn facebook" title="Share on Facebook">
                                                 <i class="fab fa-facebook-f"></i>
                                             </a>
-                                            <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->fullurl()) }}&text={{ urlencode($blog->title) }}" 
+                                            <a href="https://twitter.com/intent/tweet?url=<?php echo e(urlencode(request()->fullurl())); ?>&text=<?php echo e(urlencode($blog->title)); ?>" 
                                                target="_blank" class="share-btn twitter" title="Share on Twitter / X">
                                                 <i class="fab fa-x-twitter"></i>
                                             </a>
-                                            <a href="https://www.linkedin.com/shareArticle?url={{ urlencode(request()->fullurl()) }}&title={{ urlencode($blog->title) }}" 
+                                            <a href="https://www.linkedin.com/shareArticle?url=<?php echo e(urlencode(request()->fullurl())); ?>&title=<?php echo e(urlencode($blog->title)); ?>" 
                                                target="_blank" class="share-btn linkedin" title="Share on LinkedIn">
                                                 <i class="fab fa-linkedin-in"></i>
                                             </a>
-                                            <a href="https://wa.me/?text={{ urlencode($blog->title . ' ' . request()->fullurl()) }}" 
+                                            <a href="https://wa.me/?text=<?php echo e(urlencode($blog->title . ' ' . request()->fullurl())); ?>" 
                                                target="_blank" class="share-btn whatsapp" title="Share on WhatsApp">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
@@ -191,44 +195,45 @@
                         </article>
 
                         <!-- Related Posts -->
-                        @if($relatedBlogs->count() > 0)
+                        <?php if($relatedBlogs->count() > 0): ?>
                             <div class="related-posts">
                                 <div class="section-title">
                                     <h2>Related Articles</h2>
                                     <p>Discover more insights and expert guidance on real estate in Pakistan</p>
                                 </div>
                                 <div class="row g-4">
-                                    @foreach($relatedBlogs as $related)
+                                    <?php $__currentLoopData = $relatedBlogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $related): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="col-md-6">
                                             <div class="related-post-card">
                                                 <div class="related-post-image">
-                                                    <a href="{{ route('blog.show', $related->slug) }}">
-                                                        @if($related->featured_image)
-                                                            <img src="{{ url('' . $related->featured_image) }}" alt="{{ $related->title }}">
-                                                        @else
-                                                            <img src="{{ url('images/section/agencies-1.jpg') }}" alt="{{ $related->title }}">
-                                                        @endif
+                                                    <a href="<?php echo e(route('blog.show', $related->slug)); ?>">
+                                                        <?php if($related->featured_image): ?>
+                                                            <img src="<?php echo e(url('' . $related->featured_image)); ?>" alt="<?php echo e($related->title); ?>">
+                                                        <?php else: ?>
+                                                            <img src="<?php echo e(url('images/section/agencies-1.jpg')); ?>" alt="<?php echo e($related->title); ?>">
+                                                        <?php endif; ?>
                                                     </a>
                                                 </div>
                                                 <div class="related-post-content">
                                                     <div class="related-post-meta">
-                                                        <span><i class="fas fa-calendar-alt me-1"></i>{{ $related->formatted_published_date }}</span>
+                                                        <span><i class="fas fa-calendar-alt me-1"></i><?php echo e($related->formatted_published_date); ?></span>
                                                         <span>•</span>
-                                                        <span><i class="fas fa-clock me-1"></i>{{ $related->reading_time }}m read</span>
+                                                        <span><i class="fas fa-clock me-1"></i><?php echo e($related->reading_time); ?>m read</span>
                                                     </div>
                                                     <h3 class="related-post-title">
-                                                        <a href="{{ route('blog.show', $related->slug) }}">{{ $related->title }}</a>
+                                                        <a href="<?php echo e(route('blog.show', $related->slug)); ?>"><?php echo e($related->title); ?></a>
                                                     </h3>
                                                     <div class="related-post-excerpt">
-                                                        {{ \Str::limit(strip_tags($related->description), 100) }}
+                                                        <?php echo e(\Str::limit(strip_tags($related->description), 100)); ?>
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                             </div>
-                        @endif
+                        <?php endif; ?>
                     </div>
 
                     <!-- Sidebar -->
@@ -238,14 +243,14 @@
                             <div class="sidebar-widget">
                                 <h3 class="sidebar-title">Categories</h3>
                                 <ul class="category-list">
-                                    @foreach($categories as $category)
+                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <li class="category-item">
-                                            <a href="{{ route('blog.category', $category->slug) }}" class="category-link">
-                                                <span class="category-name"><i class="fas fa-folder me-2 text-muted"></i>{{ $category->name }}</span>
-                                                <span class="category-count">{{ $category->blogs_count ?? 0 }}</span>
+                                            <a href="<?php echo e(route('blog.category', $category->slug)); ?>" class="category-link">
+                                                <span class="category-name"><i class="fas fa-folder me-2 text-muted"></i><?php echo e($category->name); ?></span>
+                                                <span class="category-count"><?php echo e($category->blogs_count ?? 0); ?></span>
                                             </a>
                                         </li>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
 
@@ -253,16 +258,17 @@
                             <div class="sidebar-widget">
                                 <h3 class="sidebar-title">Recent Articles</h3>
                                 <ul class="recent-list">
-                                    @foreach($recentBlogs as $recent)
+                                    <?php $__currentLoopData = $recentBlogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <li class="recent-item">
-                                            <a href="{{ route('blog.show', $recent->slug) }}" class="recent-link">
-                                                <span class="recent-title">{{ \Str::limit($recent->title, 55) }}</span>
+                                            <a href="<?php echo e(route('blog.show', $recent->slug)); ?>" class="recent-link">
+                                                <span class="recent-title"><?php echo e(\Str::limit($recent->title, 55)); ?></span>
                                                 <span class="recent-date">
-                                                    <i class="fas fa-calendar-alt me-1"></i>{{ $recent->formatted_published_date }}
+                                                    <i class="fas fa-calendar-alt me-1"></i><?php echo e($recent->formatted_published_date); ?>
+
                                                 </span>
                                             </a>
                                         </li>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
 
@@ -280,7 +286,7 @@
         </section>
 
         <!-- Footer -->
-        @include('layout.footer')
+        <?php echo $__env->make('layout.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <!-- Scroll to Top Button -->
         <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
@@ -289,14 +295,14 @@
     </div>
 
     <!-- Javascript -->
-    <script src="{{ url('js/jquery.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ url('js/swiper-bundle.min.js') }}"></script>
-    <script src="{{ url('js/swiper.js') }}"></script>
-    <script src="{{ url('js/plugin.js') }}"></script>
-    <script src="{{ url('js/jquery.fancybox.js') }}"></script>
-    <script src="{{ url('js/main.js') }}"></script>
+    <script src="<?php echo e(url('js/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(url('js/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(url('js/jquery.nice-select.min.js')); ?>"></script>
+    <script src="<?php echo e(url('js/swiper-bundle.min.js')); ?>"></script>
+    <script src="<?php echo e(url('js/swiper.js')); ?>"></script>
+    <script src="<?php echo e(url('js/plugin.js')); ?>"></script>
+    <script src="<?php echo e(url('js/jquery.fancybox.js')); ?>"></script>
+    <script src="<?php echo e(url('js/main.js')); ?>"></script>
 
     <script>
         $(document).ready(function() {
@@ -347,4 +353,4 @@
         });
     </script>
 </body>
-</html>
+</html><?php /**PATH /Users/mac/Documents/GitHub/RM_MainSite/resources/views/blog-detail.blade.php ENDPATH**/ ?>

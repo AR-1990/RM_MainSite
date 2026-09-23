@@ -4,40 +4,40 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>{{ $news->title }} - Real Estate News | Randhawa Marketing</title>
+    <title><?php echo e($news->title); ?> - Real Estate News | Randhawa Marketing</title>
 
-    <meta name="description" content="{{ $news->meta_description ?? Str::limit(strip_tags($news->content), 160) }}">
-    <meta name="keywords" content="{{ $news->meta_keywords ?? 'Real Estate News, Property Updates, Market Trends, Randhawa Marketing' }}">
+    <meta name="description" content="<?php echo e($news->meta_description ?? Str::limit(strip_tags($news->content), 160)); ?>">
+    <meta name="keywords" content="<?php echo e($news->meta_keywords ?? 'Real Estate News, Property Updates, Market Trends, Randhawa Marketing'); ?>">
     <meta name="author" content="Randhawa Marketing" />
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{{ $news->title }}">
-    <meta property="og:description" content="{{ $news->meta_description ?? Str::limit(strip_tags($news->content), 160) }}">
-    <meta property="og:url" content="{{ request()->fullurl() }}">
+    <meta property="og:title" content="<?php echo e($news->title); ?>">
+    <meta property="og:description" content="<?php echo e($news->meta_description ?? Str::limit(strip_tags($news->content), 160)); ?>">
+    <meta property="og:url" content="<?php echo e(request()->fullurl()); ?>">
     <meta property="og:type" content="article">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $news->title }}">
-    <meta name="twitter:description" content="{{ $news->meta_description ?? Str::limit(strip_tags($news->content), 160) }}">
+    <meta name="twitter:title" content="<?php echo e($news->title); ?>">
+    <meta name="twitter:description" content="<?php echo e($news->meta_description ?? Str::limit(strip_tags($news->content), 160)); ?>">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="{{ url('css/bootstrap.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/animate.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/swiper-bundle.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/sib-styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/news.css') }}" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/bootstrap.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/animate.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/swiper-bundle.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/sib-styles.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/styles.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('css/news.css')); ?>" />
 
     <!-- Icon -->
-    <link rel="stylesheet" type="text/css" href="{{ url('icons/icomoon/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('icons/icomoon/style.css')); ?>" />
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="{{ url('icons/favicon.svg') }}" />
-    <link rel="apple-touch-icon-precomposed" href="{{ url('icons/favicon.svg') }}" />
+    <link rel="shortcut icon" href="<?php echo e(url('icons/favicon.svg')); ?>" />
+    <link rel="apple-touch-icon-precomposed" href="<?php echo e(url('icons/favicon.svg')); ?>" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -59,7 +59,7 @@
                     <div class="wrap-loader">
                         <div class="loader"></div>
                         <div class="icon">
-                            <img src="{{ url('/images/logo/loading.png') }}" alt="logo_icon">
+                            <img src="<?php echo e(url('/images/logo/loading.png')); ?>" alt="logo_icon">
                         </div>
                     </div>
                 </div>
@@ -67,26 +67,26 @@
         </div><!-- /.preload -->
 
         <!-- .header -->
-        @include('layout.header')
+        <?php echo $__env->make('layout.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <!-- Page Title / Hero -->
         <section class="page-title-section">
             <div class="container">
                 <div class="news-breadcrumb">
                     <nav class="breadcrumb-elegant">
-                        <a href="{{ route('index') }}"><i class="fas fa-home me-1"></i>Home</a>
+                        <a href="<?php echo e(route('index')); ?>"><i class="fas fa-home me-1"></i>Home</a>
                         <span class="bc-sep">/</span>
-                        <a href="{{ route('news.index') }}">News</a>
+                        <a href="<?php echo e(route('news.index')); ?>">News</a>
                         <span class="bc-sep">/</span>
-                        <span class="bc-current">{{ Str::limit($news->title, 50) }}</span>
+                        <span class="bc-current"><?php echo e(Str::limit($news->title, 50)); ?></span>
                     </nav>
                 </div>
-                <h1 class="page-title-heading">{{ $news->title }}</h1>
+                <h1 class="page-title-heading"><?php echo e($news->title); ?></h1>
                 <div class="news-meta-pills">
-                    <span class="meta-pill"><i class="fas fa-calendar-alt me-1"></i>{{ $news->formatted_posted_date }}</span>
-                    @if($news->featured)
+                    <span class="meta-pill"><i class="fas fa-calendar-alt me-1"></i><?php echo e($news->formatted_posted_date); ?></span>
+                    <?php if($news->featured): ?>
                         <span class="meta-pill badge-featured"><i class="fas fa-star me-1"></i>Featured</span>
-                    @endif
+                    <?php endif; ?>
                 </div>
             </div>
         </section>
@@ -100,28 +100,29 @@
                         <div class="news-article">
                             <!-- YouTube Video -->
                             <div class="news-video-container mb-4">
-                                @if($news->youtube_video_id)
+                                <?php if($news->youtube_video_id): ?>
                                     <div class="video-wrapper">
                                         <iframe 
-                                            src="https://www.youtube.com/embed/{{ $news->youtube_video_id }}" 
-                                            title="{{ $news->title }}"
+                                            src="https://www.youtube.com/embed/<?php echo e($news->youtube_video_id); ?>" 
+                                            title="<?php echo e($news->title); ?>"
                                             frameborder="0" 
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                             allowfullscreen>
                                         </iframe>
                                     </div>
-                                @else
+                                <?php else: ?>
                                     <div class="video-placeholder">
                                         <i class="fas fa-newspaper fa-3x mb-3 text-muted"></i>
                                         <p class="mb-0">Official Market Update by Randhawa Marketing</p>
                                     </div>
-                                @endif
+                                <?php endif; ?>
                             </div>
 
                             <!-- News Content -->
                             <div class="news-content">
                                 <div class="content-html">
-                                    {!! $news->content !!}
+                                    <?php echo $news->content; ?>
+
                                 </div>
                             </div>
 
@@ -131,19 +132,19 @@
                                     <i class="fas fa-share-alt me-2 text-gold"></i>Share this update:
                                 </h5>
                                 <div class="share-buttons">
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}" 
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo e(urlencode(request()->url())); ?>" 
                                        target="_blank" class="share-btn btn-facebook" title="Share on Facebook">
                                         <i class="fab fa-facebook-f me-2"></i>Facebook
                                     </a>
-                                    <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode($news->title) }}" 
+                                    <a href="https://twitter.com/intent/tweet?url=<?php echo e(urlencode(request()->url())); ?>&text=<?php echo e(urlencode($news->title)); ?>" 
                                        target="_blank" class="share-btn btn-twitter" title="Share on Twitter / X">
                                         <i class="fab fa-x-twitter me-2"></i>Twitter
                                     </a>
-                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->url()) }}" 
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo e(urlencode(request()->url())); ?>" 
                                        target="_blank" class="share-btn btn-linkedin" title="Share on LinkedIn">
                                         <i class="fab fa-linkedin-in me-2"></i>LinkedIn
                                     </a>
-                                    <a href="https://wa.me/?text={{ urlencode($news->title . ' - ' . request()->url()) }}" 
+                                    <a href="https://wa.me/?text=<?php echo e(urlencode($news->title . ' - ' . request()->url())); ?>" 
                                        target="_blank" class="share-btn btn-whatsapp" title="Share on WhatsApp">
                                         <i class="fab fa-whatsapp me-2"></i>WhatsApp
                                     </a>
@@ -152,42 +153,43 @@
                         </div>
 
                         <!-- Related News -->
-                        @if($relatedNews->count() > 0)
+                        <?php if($relatedNews->count() > 0): ?>
                             <div class="related-news mt-5">
                                 <div class="section-header mb-4">
                                     <h3>Related News & Market Updates</h3>
                                     <p class="text-muted">Stay informed with latest property insights from our experts</p>
                                 </div>
                                 <div class="row g-4">
-                                    @foreach($relatedNews as $related)
+                                    <?php $__currentLoopData = $relatedNews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $related): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="col-md-6">
                                             <div class="related-news-card">
                                                 <div class="news-thumbnail">
-                                                    @if($related->youtube_video_id)
-                                                        <a href="{{ route('news.show', $related->slug) }}">
-                                                            <img src="https://img.youtube.com/vi/{{ $related->youtube_video_id }}/mqdefault.jpg" 
-                                                                 alt="{{ $related->title }}">
+                                                    <?php if($related->youtube_video_id): ?>
+                                                        <a href="<?php echo e(route('news.show', $related->slug)); ?>">
+                                                            <img src="https://img.youtube.com/vi/<?php echo e($related->youtube_video_id); ?>/mqdefault.jpg" 
+                                                                 alt="<?php echo e($related->title); ?>">
                                                         </a>
-                                                    @else
-                                                        <a href="{{ route('news.show', $related->slug) }}" class="placeholder-thumbnail">
+                                                    <?php else: ?>
+                                                        <a href="<?php echo e(route('news.show', $related->slug)); ?>" class="placeholder-thumbnail">
                                                             <i class="fas fa-newspaper fa-2x"></i>
                                                         </a>
-                                                    @endif
+                                                    <?php endif; ?>
                                                 </div>
                                                 <div class="news-info">
-                                                    <span class="date"><i class="fas fa-calendar-alt me-1"></i>{{ $related->formatted_posted_date }}</span>
+                                                    <span class="date"><i class="fas fa-calendar-alt me-1"></i><?php echo e($related->formatted_posted_date); ?></span>
                                                     <h5>
-                                                        <a href="{{ route('news.show', $related->slug) }}">
-                                                            {{ Str::limit($related->title, 60) }}
+                                                        <a href="<?php echo e(route('news.show', $related->slug)); ?>">
+                                                            <?php echo e(Str::limit($related->title, 60)); ?>
+
                                                         </a>
                                                     </h5>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                             </div>
-                        @endif
+                        <?php endif; ?>
                     </div>
 
                     <!-- Sidebar -->
@@ -200,8 +202,8 @@
                                     <p class="text-muted mb-0">Speak with our dedicated property advisory team</p>
                                 </div>
 
-                                <form id="lead-form" action="{{ route('contact.store') }}" method="POST">
-                                    @csrf
+                                <form id="lead-form" action="<?php echo e(route('contact.store')); ?>" method="POST">
+                                    <?php echo csrf_field(); ?>
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Full Name *</label>
                                         <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Your full name" required>
@@ -216,7 +218,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="subject" class="form-label">Subject *</label>
-                                        <input type="text" class="form-control custom-input" id="subject" name="subject" required value="Inquiry via {{ Str::limit($news->title, 35) }}">
+                                        <input type="text" class="form-control custom-input" id="subject" name="subject" required value="Inquiry via <?php echo e(Str::limit($news->title, 35)); ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="interest" class="form-label">Interested In</label>
@@ -260,7 +262,7 @@
             </div>
         </section>
 
-        @include('layout.footer')
+        <?php echo $__env->make('layout.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <!-- Scroll to Top Button -->
         <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
@@ -269,10 +271,10 @@
     </div><!-- /#wrapper -->
 
     <!-- Scripts -->
-    <script src="{{ url('js/jquery.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ url('js/swiper-bundle.min.js') }}"></script>
-    <script src="{{ url('js/main.js') }}"></script>
+    <script src="<?php echo e(url('js/jquery.min.js')); ?>"></script>
+    <script src="<?php echo e(url('js/bootstrap.bundle.min.js')); ?>"></script>
+    <script src="<?php echo e(url('js/swiper-bundle.min.js')); ?>"></script>
+    <script src="<?php echo e(url('js/main.js')); ?>"></script>
 
     <script>
         $(document).ready(function() {
@@ -296,3 +298,4 @@
     </script>
 </body>
 </html>
+<?php /**PATH /Users/mac/Documents/GitHub/RM_MainSite/resources/views/news/show.blade.php ENDPATH**/ ?>

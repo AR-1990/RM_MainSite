@@ -16,6 +16,17 @@
   padding-top: var(--nav-height);
 }
 
+/* Ensure detail & listing containers do not add duplicate nav height padding */
+body.property-detail-page .pd-main,
+body.blog-detail-page .blog-hero,
+body.news-detail-page .page-title-section,
+body.blog-page .blog-main,
+body.news-page .news-main,
+body.projects-page .projects-main,
+body.properties-page .properties-main {
+  margin-top: 0;
+}
+
 /* Fixed navbar — always on top */
 #header-main,
 #header-main.header-fixed,
